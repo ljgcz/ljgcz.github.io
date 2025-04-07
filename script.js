@@ -13,11 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(res => res.json())
     .then(quotes => {
       const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-      document.getElementById("quote").textContent = randomQuote;
+      document.getElementById("quote").textContent = `"${randomQuote.quote}"`;
+      document.getElementById("author").textContent = `— ${randomQuote.author}`;
     })
     .catch(err => {
       document.getElementById("quote").textContent = "Failed to load quote.";
+      document.getElementById("author").textContent = "";
       console.error(err);
     });
 });
-
