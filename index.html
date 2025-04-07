@@ -8,27 +8,35 @@
   <script defer src="script.js"></script>
 </head>
 <body>
-  <div class="sidebar">
-    <div class="section">
-      <button class="collapsible">Projects</button>
-      <div class="content"> <!-- Add project links/info here --> </div>
+  <!-- Business Card -->
+  <div class="card" id="card">
+    <div class="card-front">
+      <div class="card-content">
+        <div class="name">Bob Tim</div>
+        <div class="school">University of XYZ</div>
+        <div class="email">bob.tim@email.com</div>
+        <div class="linkedin">linkedin.com/in/bobtim</div>
+        <div class="github">github.com/bobtim</div>
+      </div>
     </div>
-    <div class="section">
-      <button class="collapsible">Resume</button>
-      <div class="content"> <!-- Add resume embed or link here --> </div>
-    </div>
-    <div class="section">
-      <button class="collapsible">Contact</button>
-      <div class="content"> <!-- Add contact info/form here --> </div>
+    <div class="card-back">
+      <div class="card-content">
+        <p>Back of the card content...</p>
+      </div>
     </div>
   </div>
 
-  <div class="main">
-    <h1 class="title">BOB TIM</h1>
-    <div class="quote-box">
-      <p id="quote">Loading quote...</p>
-      <p id="author"></p> <!-- Author's name will be displayed here -->
+  <!-- Collapsible Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-content">
+      <h2>Sidebar Title</h2>
+      <p>Some sidebar content...</p>
     </div>
+  </div>
+
+  <div class="main-content">
+    <h1>Welcome to my portfolio</h1>
+    <p>Details about me...</p>
   </div>
 </body>
 </html>

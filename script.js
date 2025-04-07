@@ -1,24 +1,38 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // Handle collapsible sections
-  document.querySelectorAll(".collapsible").forEach(button => {
-    button.addEventListener("click", () => {
-      button.classList.toggle("active");
-      const content = button.nextElementSibling;
-      content.style.display = content.style.display === "block" ? "none" : "block";
-    });
+document.addEventListener('DOMContentLoaded', () => {
+  const card = document.getElementById('card');
+  const cardFront = document.querySelector('.card-front');
+  const cardBack = document.querySelector('.card-back');
+  let isFlipped = false;
+
+  // Enable dragging
+  let isDragging = false;
+  let offsetX, offsetY;
+
+  card.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    offsetX = e.clientX - card.offsetLeft;
+    offsetY = e.clientY - card.offsetTop;
   });
 
-  // Load and display a random quote
-  fetch('quotes.json')
-    .then(res => res.json())
-    .then(quotes => {
-      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-      document.getElementById("quote").textContent = `"${randomQuote.quote}"`;
-      document.getElementById("author").textContent = `— ${randomQuote.author}`;
-    })
-    .catch(err => {
-      document.getElementById("quote").textContent = "Failed to load quote.";
-      document.getElementById("author").textContent = "";
-      console.error(err);
-    });
+  document.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+      card.style.left = `${e.clientX - offsetX}px`;
+      card.style.top = `${e.clientY - offsetY}px`;
+    }
+  });
+
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
+
+  // Flip the card on click
+  card.addEventListener('click', () => {
+    if (!isFlipped) {
+      card.style.transform = 'rotateY(180deg) scale(3)';
+      isFlipped = true;
+    } else {
+      card.style.transform = 'rotateY(0deg) scale(1)';
+      isFlipped = false;
+    }
+  });
 });
